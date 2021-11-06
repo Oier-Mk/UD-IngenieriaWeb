@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Detalle de empleados{% endblock %}
+{% block content %}
+
+<h2>Detalles del empleado {{object.nombre}}</h2>
+<p>Id: {{object.id}}, Nombre: {{ object.nombre }}, Fecha nacimiento: {{ object.fecha_nacimiento }}, Antiguedad: {{ object.antiguedad }}</p>
+
+{% endblock %}
+
+
+

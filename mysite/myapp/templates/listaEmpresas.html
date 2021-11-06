@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Lista de empresas{% endblock %}
+{% block content %}
+
+<h2>" Lista de id de las diferentes entradas en la app por empresas con el mismo nombre "</h2>
+<ul>
+    {% for E in lEmpresas %}
+        <li>{{E.id}}, <a href="{% url 'id' E.id %}">{{ E.nombre }}</a></li>    <!--<a href="/empresa/{{E.id}}">-->
+    {% endfor %}
+</ul>
+
+{% endblock %}

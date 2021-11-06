@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Detalles de empresas{% endblock %}
+{% block content %}
+
+<h2>" Detalles de la empresa {{variable.nombre}} "</h2>
+<br>
+<p>{{ variable.nombre }}, {{variable.cif}}</p>
+
+<h2>" Empleados de la empresa {{variable.nombre}} "</h2>
+<br>
+<ul>
+    {% for E in variable.trabajador_set.all %}
+        <li>Id: {{E.id}}, <a href="{% url 'detalle' E.id %}">Nombre: {{ E.nombre }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
