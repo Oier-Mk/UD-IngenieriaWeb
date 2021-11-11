@@ -41,5 +41,5 @@ def empleados(request):
 ##########DETAILED VIEW##########
 class EmpleadoDetailView(DetailView):  #pasa un objeto llamado object que recibe por parametro en el enlace
     model = Trabajador
-    template_name = "empleadoDetail.hmtl"
+    template_name = "detalleEmpleado.hmtl"
 

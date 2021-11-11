@@ -4,6 +4,8 @@ from django.views.generic.detail import DetailView
 
 from . import views
 
+from .views import *
+
 urlpatterns = [
     # myApp
     path('', views.index, name='index'), #como es una vista home ho es necesario cargar ningun indice
@@ -13,8 +15,8 @@ urlpatterns = [
     path('empresas/<int:id_empresa>', views.idEmpresa, name='id'), #con id de empresa
     # myApp/empleados
     path('empleados/listado', views.empleados, name='empleados'), 
-    # myApp/
-    path('detail/empleado/<int:pk>', DetailView.as_view(), name='detalle'),
+    # myApp/empleado/[pk]
+    path('detail/empleado/<int:pk>', EmpleadoDetailView.as_view(), name='detalle'),
 ]   
 
 
