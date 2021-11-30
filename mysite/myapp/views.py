@@ -1,8 +1,10 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render
 
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import *
 
 from django.http import HttpResponse
+
+from django.views.generic.list import *
 
 from .models import *
 
@@ -11,7 +13,7 @@ from .models import *
 ##########LISTED VIEW##########
 
 def index(request): #guarda informacion respecto a la peticion
-    return HttpResponse("Hello, world!")
+    return render(request, "index.html")
 
 def nombreEmpresa(request, nombre_empresa): 
     lEmpresas = get_list_or_404(Empresa, nombre = nombre_empresa) #porque sabemos que puede haber mas de una empresa con el mismo nombre
@@ -30,16 +32,22 @@ def idEmpresa(request, id_empresa):
     }
     return render(request,"detalleEmpresa.html",context)
 
+'''
 def empleados(request): 
     empleados = get_list_or_404(Trabajador)
     context = {
         'lEmpleados' : empleados #en el HTML se tiene que usar la variable a la izq
     }
     return render(request,"listaEmpleados.html",context)
-
+'''
 
 ##########DETAILED VIEW##########
 class EmpleadoDetailView(DetailView):  #pasa un objeto llamado object que recibe por parametro en el enlace
     model = Trabajador
     template_name = "detalleEmpleado.hmtl"
 
+class EmpleadoListView(ListView):
+    model = Trabajador
+    queryset = Trabajador.objects.all()
+    template_name = "listaEmpleados.html"
+    context_object_name = "lEmpleados"

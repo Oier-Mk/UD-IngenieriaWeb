@@ -1,1 +1,4 @@
-alert( 'Hola, Mundo!' );
+
+function alerta(){
+    alert( 'Hola, Mundo!' );
+}

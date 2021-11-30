@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html Lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Hola Mundo desde vue.js</title>
+        <script type="text/javascript" src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{header.toLocaleUpperCase()}}</h1>
+            <div v-if="state==='edit'" class="add-item-form">
+                <input v-model="newLanguage" type="text" placeholder="Agregar nuevo lenguaje" @keyup.enter="saveLanguage">
+                <!-- <button @click="saveLanguage">Insertar Lenguaje</button> -->
+                <button @click="saveLanguage" :disabled="newLanguage.length===0">Insertar Lenguaje</button>
+            </div>
+            <button v-if="state==='default'" @click="changeState('edit')">Activar edición</button>
+            <button v-else @click="changeState('default')">Desactivar edición</button>
+            <ul>
+                <li v-for="l in languages">
+                    {{l.label}}
+                </li>
+            </ul>
+            
+            <p v-if="languages.length === 0">No hay lenguajes.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat sequi minima deserunt eligendi asperiores obcaecati magnam explicabo fugiat voluptatibus voluptas, dignissimos veritatis debitis nostrum numquam reiciendis blanditiis error mollitia illum?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, quae. Facere officia explicabo repellendus fugiat asperiores suscipit neque recusandae, accusantium tenetur cumque, ducimus in id dolore, aut quaerat veniam architecto?</p>
+            
+        </div>
+        <script type="text/javascript">
+
+        var app = new Vue({
+            el: "#app",
+            data:{
+                state: 'default',
+                header:'Lenguajes de Programación de IW',
+                newLanguage:'',
+                languages:[{
+                    label: 'JavaScript',
+                    mastered: false
+                },
+                {
+                    label: 'Python',
+                    mastered: false
+                },
+            ]
+            },
+            methods:{
+                saveLanguage: function(event){
+                    this.languages.push({label:this.newLanguage, mastered: false});
+                    alert(this.newLanguage);
+                    this.newLanguage="";
+                    // if(event){
+                    //     alert(event.target.tagName)
+                    // }
+                },
+                changeState: function(newState){
+                    this.state = newState;
+                }
+            }
+        });
+        </script>
+    </body>
+</html>

@@ -13,8 +13,8 @@ urlpatterns = [
     path('<str:nombre_empresa>/', views.nombreEmpresa, name='nombre'), #con nombre de la empresa
     # myApp/empresa/[id]
     path('empresas/<int:id_empresa>', views.idEmpresa, name='id'), #con id de empresa
-    # myApp/empleados
-    path('empleados/listado', views.empleados, name='empleados'), 
+    # myApp/empleados/listado
+    path('empleados/listado', EmpleadoListView.as_view(), name='empleados'), 
     # myApp/empleado/[pk]
     path('detail/empleado/<int:pk>', EmpleadoDetailView.as_view(), name='detalle'),
 ]   
